@@ -10,22 +10,6 @@ def index():
 
 @app.route('/signUpReq', methods=['POST', 'GET'])
 
-# def databaseEntry(username, email, password):
-#     try:
-#         with sql.connect('database.db') as con:
-#             cur = con.cursor()
-#             cur.execute("INSERT INTO logInfo(username, email, password) VALUES (?,?,?)", (username, email, password))
-#             con.commit()
-#             msg = "Record submitted succesfully"
-#     except:
-#         con.rollback()
-#         msg = "error in inserting data"
-#     finally:
-#         return render_template('hello.html', username = username)
-#         con.close()
-
-
-
 def gettingData():
     msg=False
     if request.method == 'POST':
@@ -35,10 +19,10 @@ def gettingData():
         password = request.form['password']
       
         con = mysqlcon.connect(
-            host="localhost",
-            user="root",
-            password="9329025673*",
-            db="flaskProj"
+            host="YOUR HOST HERE",
+            user="YOUR USERNAME HERE",
+            password="YOUR PASSWORD HERE",
+            db="YOUR DATABASE HERE"
         )
         cur = con.cursor()
 
@@ -46,12 +30,6 @@ def gettingData():
         con.commit()
         msg = True
         con.close()
-        
-                       
-        if (msg):
-            return render_template('hello.html', username=username, mesg=msg)
-        else:
-            return "Connectivity Issue"
 
 @app.route("/login")
 def login():
@@ -65,10 +43,10 @@ def auth():
         password = request.form['password']
 
         con = mysqlcon.connect(
-            host="localhost",
-            user="root",
-            password="9329025673*",
-            db="flaskProj"
+            host="YOUR HOST HERE",
+            user="YOUR USERNAME HERE",
+            password="YOUR PASSWORD HERE",
+            db="YOUR DATABASE HERE"
         )
         cur = con.cursor()
 
